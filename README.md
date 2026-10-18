@@ -41,15 +41,3 @@ A oficina inclui **demonstração ao vivo**.
 ## Palestrante
 
 **Diego Noronha** é engenheiro de software sênior e líder técnico de sistemas estratégicos do Governo de Rondônia. Professor, mentor e palestrante, atua em projetos nacionais e internacionais e tem mais de 10 anos de experiência em tecnologia e inteligência artificial.
-
-## Estrutura do repositório
-
-```
-.
-├── README.md
-└── ...   # apresentação, exemplos de agentes/skills e material de apoio (a definir)
-```
-
-## Licença
-
-A definir.
