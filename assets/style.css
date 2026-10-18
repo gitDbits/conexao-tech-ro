@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("vendor/press-start-2p.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  /* Paleta cyberpunk: noite roxa com neons ciano, rosa e verde de terminal */
+  --bg: #150f26;        /* noite roxa */
+  --surface: #2b2957;   /* índigo */
+  --fg: #e8e6ff;        /* texto */
+  --muted: #a79bd6;     /* lilás */
+  --accent: #22e5ff;    /* neon ciano */
+  --pink: #ff2e97;      /* neon rosa */
+  --green: #39ff88;     /* verde de terminal */
+  --orange: #ff6a3d;    /* letreiro laranja */
+  --purple: #9b4dff;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 0%, #2b2957 0%, var(--bg) 60%) no-repeat var(--bg);
+  color: var(--fg);
+  font-family: "Press Start 2P", cursive;
+}
+
+.deck {
+  height: 100%;
+}
+
+.slide {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 4vh 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3vh;
+}
+
+.cover__logo {
+  width: min(14vw, 180px);
+  image-rendering: pixelated;
+}
+
+.cover__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+  line-height: 1.4;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent), 0 0 24px var(--purple);
+}
+
+.cover__subtitle {
+  margin: 0;
+  font-size: clamp(0.8rem, 1.6vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+.cover__speaker {
+  margin-top: 2vh;
+}
+
+.cover__name {
+  margin: 0 0 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+
+.cover__role {
+  margin: 0;
+  font-size: clamp(0.6rem, 1vw, 0.9rem);
+  color: var(--muted);
+}
+
+.cover__title .prompt {
+  color: var(--pink);
+  text-shadow: 0 0 8px var(--pink);
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: -0.1em;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Fundo do container igual ao da página para não aparecer nos cantos do NES.css */
+.nes-container.is-dark {
+  background-color: var(--bg);
+  color: var(--fg);
+  filter: drop-shadow(0 0 6px var(--pink));
+}
+
+.cover__year {
+  margin: 0;
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
+  color: var(--muted);
+}
