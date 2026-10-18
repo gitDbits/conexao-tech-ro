@@ -1,5 +1,6 @@
-// Digita os [data-typewriter] em sequência como num terminal, com cursor piscando.
-// Depois de uma pausa apaga tudo (de trás para frente) e recomeça.
+// Digita os [data-typewriter] de um slide em sequência como num terminal, com cursor piscando.
+// Depois de uma pausa apaga tudo (de trás para frente) e recomeça. Só o slide ativo anima.
+// Com data-typewriter="once" o texto é digitado uma vez e permanece na tela.
 const TYPE_DELAY_MS = 80;
 const ERASE_DELAY_MS = 35;
 const START_DELAY_MS = 600;
@@ -19,7 +20,7 @@ function prepare(el) {
 
   el.setAttribute("aria-label", text);
   el.replaceChildren(...(prompt ? [prompt, " "] : []), typed, rest);
-  return { typed, rest, text };
+  return { typed, rest, text, once: el.dataset.typewriter === "once" };
 }
 
 function show(line, length) {
@@ -27,24 +28,40 @@ function show(line, length) {
   line.rest.textContent = line.text.slice(length);
 }
 
-async function loop(lines) {
-  const cursor = document.createElement("span");
-  cursor.className = "cursor";
-  cursor.setAttribute("aria-hidden", "true");
+const SLIDE_STATES = ["is-typing", "is-revealed"];
 
+const cursor = document.createElement("span");
+cursor.className = "cursor";
+cursor.setAttribute("aria-hidden", "true");
+
+let run = 0; // identifica a execução vigente; trocar de slide invalida a anterior
+
+async function loop(lines, slide) {
+  const id = ++run;
+  const alive = () => id === run;
+  const once = lines.every((line) => line.once);
+
+  // Em "once", o resto do slide só aparece depois que a digitação termina (classes is-typing/is-revealed).
+  slide.classList.remove(...SLIDE_STATES);
+  if (once) slide.classList.add("is-typing");
+  lines.forEach((line) => show(line, 0));
   await sleep(START_DELAY_MS);
-  while (true) {
+  while (alive()) {
     for (const line of lines) {
       line.typed.after(cursor);
-      for (let i = 1; i <= line.text.length; i++) {
+      for (let i = 1; i <= line.text.length && alive(); i++) {
         show(line, i);
         await sleep(TYPE_DELAY_MS);
       }
     }
+    if (once) {
+      if (alive()) slide.classList.replace("is-typing", "is-revealed");
+      return;
+    }
     await sleep(HOLD_MS);
     for (const line of [...lines].reverse()) {
       line.typed.after(cursor);
-      for (let i = line.text.length - 1; i >= 0; i--) {
+      for (let i = line.text.length - 1; i >= 0 && alive(); i--) {
         show(line, i);
         await sleep(ERASE_DELAY_MS);
       }
@@ -54,7 +71,18 @@ async function loop(lines) {
 }
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const lines = [...document.querySelectorAll("[data-typewriter]")].map(prepare);
-  lines.forEach((line) => show(line, 0));
-  loop(lines);
+  const groups = new Map();
+  document.querySelectorAll(".slide").forEach((slide) => {
+    const els = slide.querySelectorAll("[data-typewriter]");
+    if (els.length) groups.set(slide, [...els].map(prepare));
+  });
+
+  const start = (slide) => {
+    const lines = groups.get(slide);
+    if (lines) loop(lines, slide);
+    else run++; // slide sem digitação: cancela a animação anterior
+  };
+
+  document.addEventListener("slidechange", (event) => start(event.detail.slide));
+  start(document.querySelector(".slide.is-active"));
 }

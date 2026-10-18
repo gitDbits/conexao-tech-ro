@@ -76,7 +76,8 @@ html, body {
   color: var(--muted);
 }
 
-.cover__title .prompt {
+.cover__title .prompt,
+.map__title .prompt {
   color: var(--pink);
   text-shadow: 0 0 8px var(--pink);
 }
@@ -107,4 +108,144 @@ html, body {
   margin: 0;
   font-size: clamp(0.7rem, 1.2vw, 1rem);
   color: var(--muted);
+}
+
+/* Navegação: com JS ativo só o slide corrente aparece */
+.deck.is-ready .slide:not(.is-active) {
+  display: none;
+}
+
+/* Slide: mapa da jornada */
+.map__title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.6vw, 2.2rem);
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent), 0 0 24px var(--purple);
+}
+
+.map__subtitle {
+  margin: 0;
+  font-size: clamp(0.6rem, 1.2vw, 1rem);
+  color: var(--muted);
+}
+
+.map {
+  list-style: none;
+  margin: 2vh 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4vh 2.5vw;
+}
+
+.module {
+  position: relative;
+  margin: 0;
+  padding: 1.2rem 1rem;
+  text-align: left;
+}
+
+/* Seta pixelada ligando uma fase à próxima (exceto no fim de cada linha) */
+.module:not(:nth-child(4n))::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(-1.25vw - 7px);
+  transform: translateY(-50%);
+  border-left: 10px solid var(--pink);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  filter: drop-shadow(0 0 4px var(--pink));
+}
+
+.module__num {
+  font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+  color: var(--pink);
+  text-shadow: 0 0 6px var(--pink);
+}
+
+.module__title {
+  margin: 0.8rem 0 0.6rem;
+  font-size: clamp(0.65rem, 1.1vw, 1rem);
+  line-height: 1.4;
+  color: var(--accent);
+}
+
+.module__desc {
+  margin: 0;
+  font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+/* Mapa estilo seleção de fases: HUD, moedas, barra de XP e entrada em sequência */
+.hud {
+  margin: 0;
+  font-size: clamp(0.5rem, 0.9vw, 0.75rem);
+  color: var(--orange);
+  text-shadow: 0 0 6px var(--orange);
+}
+
+.module__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module__top .nes-icon {
+  margin: 0 0 6px;
+}
+
+.nes-container.module--goal {
+  filter: drop-shadow(0 0 10px var(--green));
+}
+
+.module--goal .module__num,
+.module--goal .module__title {
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green);
+}
+
+.xp {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+}
+
+.xp i {
+  height: 6px;
+  background: var(--surface);
+}
+
+.xp i.on {
+  background: var(--green);
+  box-shadow: 0 0 4px var(--green);
+}
+
+.slide--map.is-typing .module {
+  opacity: 0;
+}
+
+.slide--map.is-revealed .module {
+  animation: level-in 0.5s steps(5) backwards;
+  animation-delay: calc(var(--i) * 0.35s);
+}
+
+@keyframes level-in {
+  from { opacity: 0; transform: translateY(16px); }
+}
+
+.module:not(:nth-child(4n))::after {
+  animation: nudge 0.8s steps(2) infinite;
+}
+
+@keyframes nudge {
+  50% { transform: translate(4px, -50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module::after { animation: none !important; }
 }
