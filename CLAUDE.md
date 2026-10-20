@@ -23,6 +23,8 @@ Este repositório guarda a apresentação da oficina descrita no `README.md`. As
 | `--green` | `#39ff88` | cursor e verde de terminal |
 | `--orange` | `#ff6a3d` | alertas e letreiros |
 | `--purple` | `#9b4dff` | brilho secundário |
+| `--skin` | `#ffcf9f` | pele dos sprites pixel art dos players |
+| `--gold` | `#ffd23f` | coroas e detalhes dos sprites dos players |
 
 Diretrizes:
 - Destaques levam brilho neon (`text-shadow` ou `drop-shadow`) na cor do próprio elemento.
