@@ -625,36 +625,72 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
-      <h2 class="slide__title"><span class="prompt">&gt;</span> Solução 4 de 5</h2>
-      <p class="slide__subtitle reveal" style="--i: 0">Fora da sintaxe e do estilo de código definidos</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Hooks: automação por evento</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Comandos que rodam sozinhos, a quinta peça do pipeline</p>
       <div class="case">
         <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
-          <h3 class="case__label">PROBLEMA</h3>
+          <h3 class="case__label">O QUE É</h3>
           <ul class="case__list">
-            <li>Cada dev formatando de um jeito</li>
-            <li>PR com ruído de estilo e discussão de gosto</li>
+            <li>Comandos que o Claude Code roda em eventos: antes e depois de uma ferramenta, ao iniciar, ao concluir, ao parar</li>
+            <li>Não dependem da IA lembrar</li>
+            <li>Configurados em .claude/settings.json</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
-          <h3 class="case__label">COMO RESOLVEMOS</h3>
+          <h3 class="case__label">DE ONDE VEM</h3>
           <ul class="case__list">
-            <li>Hook: todo arquivo salvo pela IA passa por RuboCop e ERB Lint</li>
-            <li>lint-agent, em modelo leve, ajusta só estilo e nunca a lógica</li>
-            <li>CI barra o PR que fugir do estilo</li>
+            <li>Mesmo repositório rails_ai_agents</li>
+            <li>5 eventos: SessionStart, PostToolUse, PreToolUse, TaskCompleted e Stop</li>
+            <li>Instalados no Delphos em maio de 2026</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
-          <h3 class="case__label">BENEFÍCIOS</h3>
+          <h3 class="case__label">NO DELPHOS</h3>
           <ul class="case__list">
-            <li>Estilo resolvido antes do commit</li>
-            <li>Diffs limpos, só com o que importa</li>
-            <li>Review dedicado à lógica</li>
+            <li>RuboCop e ERB Lint em cada arquivo editado</li>
+            <li>Bloqueio de comandos destrutivos</li>
+            <li>Lembrete de testes e lint ao concluir uma tarefa</li>
           </ul>
         </article>
       </div>
-      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/settings.json • .rubocop.yml • agents/lint-agent.md</p>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/settings.json</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que hooks com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que a IA faz sozinha, e o que o hook garante</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Pedir “rode o lint” no prompt falha uma hora</span><span class="why__arrow">▶</span><span class="why__phase">O hook roda sempre, sem ninguém pedir</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Estilo diferente em cada arquivo gerado</span><span class="why__arrow">▶</span><span class="why__phase">RuboCop e ERB Lint em todo arquivo editado</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Comando destrutivo passa num “ok” distraído</span><span class="why__arrow">▶</span><span class="why__phase">O hook barra rm -rf, DROP e push forçado</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">A IA diz “pronto” sem rodar os testes</span><span class="why__arrow">▶</span><span class="why__phase">Lembrete de testes e lint ao concluir a tarefa</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">Você só vê o fim se olhar a tela</span><span class="why__arrow">▶</span><span class="why__phase">Notificação no desktop quando a IA termina</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Prompt pede. Hook garante.</p>
+        <p class="phase__quote-sub">Limite: hook é um comando de shell. Se o ambiente não o executa, ele falha em silêncio.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/settings.json</p>
+    </section>
+
+    <section class="slide slide--case slide--stack slide--agents">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Os 5 hooks</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Um por evento do ciclo de trabalho da IA</p>
+      <ul class="stack"><li class="nes-container is-dark is-rounded stack__item stack__item--accent reveal" style="--i: 1"><span class="stack__kind">SESSIONSTART</span><span class="stack__name">Contexto</span><span class="stack__desc">Mostra branch, Ruby, Rails e migrations pendentes</span></li><li class="nes-container is-dark is-rounded stack__item stack__item--pink reveal" style="--i: 2"><span class="stack__kind">POSTTOOLUSE</span><span class="stack__name">Formatar</span><span class="stack__desc">RuboCop no .rb e ERB Lint no .erb, a cada edição</span></li><li class="nes-container is-dark is-rounded stack__item stack__item--orange reveal" style="--i: 3"><span class="stack__kind">PRETOOLUSE</span><span class="stack__name">Bloquear</span><span class="stack__desc">Barra rm -rf, DROP, push forçado na main e chmod 777</span></li><li class="nes-container is-dark is-rounded stack__item stack__item--purple reveal" style="--i: 4"><span class="stack__kind">TASKCOMPLETED</span><span class="stack__name">Conferir</span><span class="stack__desc">Lembra de rodar bin/rspec e bin/rubocop</span></li><li class="nes-container is-dark is-rounded stack__item stack__item--green reveal" style="--i: 5"><span class="stack__kind">STOP</span><span class="stack__name">Avisar</span><span class="stack__desc">Notifica no desktop quando a IA termina</span></li></ul>
+      <p class="case__artifact reveal" style="--i: 6"><span>BLOQUEIO</span> o PreToolUse sai com código 2: o comando não roda</p>
+      <p class="case__artifact reveal" style="--i: 7"><span>FORMATAÇÃO</span> termina com || true: nunca trava o fluxo</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Hooks na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O hook de formatação do settings.json</p>
+      <div class="demo demo--shot" style="--fs: 1.5cqw; --lh: 2.3">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">EVENTO</b><span>Quando dispara</span></li><li><b class="mk mk--ok">MATCHER</b><span>Em qual ferramenta</span></li><li><b class="mk mk--extra">COMMAND</b><span>O que roda</span></li><li><b class="mk mk--ok">TIMEOUT</b><span>Tempo máximo</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">.claude/settings.json</span>
+          <pre><code><span class="ln"><span class="tk-k">"hooks"</span>: {</span><span class="ln">  <span class="tk-k">"PostToolUse"</span>: [{</span><span class="ln">    <span class="tk-k">"matcher"</span>: <span class="tk-s">"Edit|Write"</span>,</span><span class="ln">    <span class="tk-k">"hooks"</span>: [{</span><span class="ln">      <span class="tk-k">"type"</span>: <span class="tk-s">"command"</span>,</span><span class="ln">      <span class="tk-k">"command"</span>: <span class="tk-s">"… bin/rubocop -a $FILE …"</span>,</span><span class="ln">      <span class="tk-k">"timeout"</span>: <span class="tk-n">30</span></span><span class="ln">    }]</span><span class="ln">  }]</span><span class="ln">}</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">Configurado: cada .rb editado pela IA passa pelo RuboCop</li><li class="reveal" style="--i: 4">O lint-agent corrige à mão o que o autocorrect não pega</li><li class="reveal" style="--i: 5">O CI ainda barra o PR que fugir do estilo</li></ul>
     </section>
 
     <section class="slide slide--case">
