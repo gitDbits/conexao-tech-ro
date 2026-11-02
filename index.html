@@ -695,6 +695,76 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Skills: receitas sob demanda</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Procedimentos escritos uma vez, a sexta peça do pipeline</p>
+      <div class="case">
+        <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
+          <h3 class="case__label">O QUE É</h3>
+          <ul class="case__list">
+            <li>Pasta com SKILL.md: o passo a passo de uma tarefa</li>
+            <li>A descrição diz quando usar; o resto carrega só quando preciso</li>
+            <li>Pode rodar separada, só com ferramentas de leitura</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
+          <h3 class="case__label">DE ONDE VEM</h3>
+          <ul class="case__list">
+            <li>rails_ai_agents: 20 skills no Delphos, de revisão e de conhecimento</li>
+            <li>Nossas, escritas para a SEPOG: card, commit, PR e review</li>
+            <li>SDD também é skill: specify, plan, tasks, implement e validate</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
+          <h3 class="case__label">NO DELPHOS</h3>
+          <ul class="case__list">
+            <li>O CLAUDE.md manda ler a skill certa antes de criar card, commit, PR ou review</li>
+            <li>Mesmo roteiro, mesmo formato, para qualquer desenvolvedor</li>
+            <li>As nossas ficam em .claude/git e .claude/sepog</li>
+          </ul>
+        </article>
+      </div>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/skills/ • .claude/git/ • .claude/sepog/</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que skills com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que a IA faz sozinha, e o que a receita resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">O processo da equipe explicado de novo a cada conversa</span><span class="why__arrow">▶</span><span class="why__phase">A skill traz o passo a passo pronto</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Card, commit e PR mudam conforme quem pede</span><span class="why__arrow">▶</span><span class="why__phase">Mesmo roteiro e mesmo formato SEPOG</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Conhecimento demais enche o contexto da IA</span><span class="why__arrow">▶</span><span class="why__phase">Só a descrição fica à vista; o resto carrega quando preciso</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">Análise pesada polui a conversa principal</span><span class="why__arrow">▶</span><span class="why__phase">A skill roda separada (context: fork), só leitura</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">A regra do órgão, como o catálogo de USTs, é esquecida</span><span class="why__arrow">▶</span><span class="why__phase">A skill leva o catálogo junto, em references/</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Skill é o procedimento da equipe, escrito uma vez.</p>
+        <p class="phase__quote-sub">Limite: skill é instrução, não trava. Quem garante é o CLAUDE.md, o hook e o CI.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/skills/ • .claude/sepog/references/</p>
+    </section>
+
+    <section class="slide slide--case slide--stack slide--agents slide--skills">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> As skills do Delphos</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">As do pacote e as nossas, escritas para o fluxo da SEPOG</p>
+      <ul class="stack"><li class="nes-container is-dark is-rounded stack__item stack__item--accent reveal" style="--i: 1"><span class="stack__kind">7 DO PACOTE</span><span class="stack__name">Revisão</span><span class="stack__desc stack__desc--list"><span>code-review</span><span>security-audit</span><span>accessibility-review</span><span>codex-review</span><span>dependabot-review</span><span>friction-review</span><span>mutation-testing</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--purple reveal" style="--i: 2"><span class="stack__kind">13 DO PACOTE</span><span class="stack__name">Conhecimento</span><span class="stack__desc stack__desc--list"><span>rails-architecture</span><span>postgres-patterns</span><span>solid-queue-setup</span><span>i18n-patterns</span><span>e mais 9</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--orange reveal" style="--i: 3"><span class="stack__kind">5 NOSSAS</span><span class="stack__name">Fluxo SEPOG</span><span class="stack__desc stack__desc--list"><span>create-jira-card</span><span>commit-smart</span><span>pull-request-smart</span><span>review-pull-request-smart</span><span>review-ruby-code</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--pink reveal" style="--i: 4"><span class="stack__kind">5 DO SDD</span><span class="stack__name">Pipeline</span><span class="stack__desc stack__desc--list"><span>specify</span><span>plan</span><span>tasks</span><span>implement</span><span>validate</span></span></li></ul>
+      <p class="case__artifact reveal" style="--i: 5"><span>COMO CHAMAR</span> as do SDD pela ferramenta Skill; as demais o CLAUDE.md manda ler</p>
+      <p class="case__artifact reveal" style="--i: 6"><span>NOSSAS</span> card Jira, commit, PR e review: o fluxo real da gerência</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Skills na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Anatomia de uma skill: a create-jira-card</p>
+      <div class="demo demo--shot" style="--fs: 1.55cqw; --lh: 2.5">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">NAME</b><span>Identifica a skill</span></li><li><b class="mk mk--ok">DESC</b><span>Quando usar</span></li><li><b class="mk mk--extra">PASSOS</b><span>Roteiro fixo</span></li><li><b class="mk mk--ok">REFS</b><span>Catálogo de USTs</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">.claude/sepog/skills/create-jira-card.md</span>
+          <pre><code><span class="ln"><span class="tk-k">Passo 1</span>  Entender a tarefa</span><span class="ln"><span class="tk-k">Passo 2</span>  Perguntar a Categoria</span><span class="ln"><span class="tk-k">Passo 3</span>  Consultar o Catálogo de Estimativas</span><span class="ln"><span class="tk-k">Passo 4</span>  Montar o card</span><span class="ln"><span class="tk-k">Passo 5</span>  Verificar consistência</span><span class="ln"><span class="tk-k">Passo 6</span>  Buscar épico correspondente no Jira</span><span class="ln"><span class="tk-k">Passo 7</span>  Perguntar sobre criação do card</span><span class="ln"><span class="tk-k">Passo 8</span>  Criar o card no Jira (se confirmado)</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">O CLAUDE.md manda ler esta skill antes de qualquer card</li><li class="reveal" style="--i: 4">O passo 7 pergunta antes de criar: a IA não age sozinha</li><li class="reveal" style="--i: 5">O mesmo formato serve para commit, PR e review</li></ul>
+    </section>
+
+    <section class="slide slide--case">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> Solução 5 de 5</h2>
       <p class="slide__subtitle reveal" style="--i: 0">Segurança fora do exigido e gems desatualizadas</p>
       <div class="case">
