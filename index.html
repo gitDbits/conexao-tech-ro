@@ -962,6 +962,128 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> PR padrão: título e descrição</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Pull Request no formato do projeto, a décima peça do pipeline</p>
+      <div class="case">
+        <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
+          <h3 class="case__label">O QUE É</h3>
+          <ul class="case__list">
+            <li>Título no formato tipo(escopo): descrição, até 72 caracteres</li>
+            <li>Corpo em cinco seções: contexto, o que foi feito, tipo, checklist e como testar</li>
+            <li>Escrito no imperativo e focado em comportamento</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
+          <h3 class="case__label">DE ONDE VEM</h3>
+          <ul class="case__list">
+            <li>Skill pull-request-smart, nossa</li>
+            <li>11 passos: pré-requisitos, branch base, commits, diff, título e corpo</li>
+            <li>Mostra o texto e confirma com você antes de criar</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
+          <h3 class="case__label">NO DELPHOS</h3>
+          <ul class="case__list">
+            <li>O CLAUDE.md manda ler a skill antes de criar qualquer PR</li>
+            <li>O PR leva os artefatos SDD: spec, plan e tasks</li>
+            <li>A descrição diz por que mudou e como testar</li>
+          </ul>
+        </article>
+      </div>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/git/pull-request-smart/SKILL.md</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que PR padrão com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que acontece com PR solto, e o que o padrão resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Título vago, do tipo “ajustes”</span><span class="why__arrow">▶</span><span class="why__phase">tipo(escopo): descrição, até 72 caracteres</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Descrição de uma linha, sem contexto</span><span class="why__arrow">▶</span><span class="why__phase">Contexto: por que a mudança foi necessária</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">O revisor não sabe como validar</span><span class="why__arrow">▶</span><span class="why__phase">Como testar, passo a passo</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">O checklist é esquecido</span><span class="why__arrow">▶</span><span class="why__phase">Checklist no corpo: RuboCop, testes, migrações</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">A IA descreve arquivos, não comportamento</span><span class="why__arrow">▶</span><span class="why__phase">O que foi feito foca no comportamento</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>A descrição é o contexto do revisor.</p>
+        <p class="phase__quote-sub">Limite: a skill escreve a descrição, mas quem confere se ela é verdadeira é o autor.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/git/pull-request-smart/SKILL.md</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> PR na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">PR #427 do Delphos, o card SCRUM-229</p>
+      <div class="demo demo--shot" style="--fs: 1.45cqw; --lh: 1.95">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">TÍTULO</b><span>tipo(escopo): descrição</span></li><li><b class="mk mk--ok">CONTEXTO</b><span>Por que mudou</span></li><li><b class="mk mk--extra">FEITO</b><span>Comportamento</span></li><li><b class="mk mk--ok">TESTAR</b><span>Passo a passo</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">PR #427 • branch 887-fix-grau-instrucao-labels</span>
+          <pre><code><span class="ln"><span class="tk-k">Título</span></span><span class="ln">fix(caged): corrige rótulos de grau de…</span><span class="ln"><span class="tk-k">## Contexto</span></span><span class="ln">  Rótulos do DW divergem do layout do MTE</span><span class="ln"><span class="tk-k">## O que foi feito</span></span><span class="ln">  Migration só de dados, reversível</span><span class="ln">  Spec novo da migration, 11 exemplos</span><span class="ln"><span class="tk-k">## Tipo de mudança</span></span><span class="ln">  <span class="tk-s">[x]</span> fix  <span class="tk-s">[x]</span> documentação</span><span class="ln"><span class="tk-k">## Checklist</span></span><span class="ln">  <span class="tk-s">[x]</span> rubocop <span class="tk-s">[x]</span> testes <span class="tk-s">[x]</span> migração</span><span class="ln"><span class="tk-k">## Como testar</span></span><span class="ln">  1. bin/rspec spec/db/dw_caged/migrate/</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">Branch e pasta de spec com o mesmo número: 887</li><li class="reveal" style="--i: 4">15 arquivos, e a descrição explica cada grupo</li><li class="reveal" style="--i: 5">Os artefatos SDD seguem junto no PR</li></ul>
+    </section>
+
+    <section class="slide slide--case">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Review automatizada</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Revisão de PR com a IA, a décima primeira peça do pipeline</p>
+      <div class="case">
+        <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
+          <h3 class="case__label">O QUE É</h3>
+          <ul class="case__list">
+            <li>Skill que recebe o link do PR e faz a revisão técnica</li>
+            <li>Posta comentários inline, no arquivo e na linha, em português</li>
+            <li>Cada comentário traz um prefixo de severidade</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
+          <h3 class="case__label">DE ONDE VEM</h3>
+          <ul class="case__list">
+            <li>Skill review-pull-request-smart, nossa</li>
+            <li>Em cima da review-ruby-code: orientação a objetos, Rails, segurança e testes</li>
+            <li>Roda rubycritic, brakeman, rubocop e rspec</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
+          <h3 class="case__label">NO DELPHOS</h3>
+          <ul class="case__list">
+            <li>Antes da técnica, aplica as regras do PR: sem descrição, a revisão nem começa</li>
+            <li>Mais de 10 arquivos: avisa e segue</li>
+            <li>Lista os comentários e espera sua confirmação antes de postar</li>
+          </ul>
+        </article>
+      </div>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/git/review-pull-request-smart/SKILL.md</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que review automatizada?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que acontece sem ela, e o que a skill resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Aprovado em 2 minutos, com o CI vermelho</span><span class="why__arrow">▶</span><span class="why__phase">Roda rubocop, brakeman e rspec antes de comentar</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Ninguém aponta arquivo nem linha</span><span class="why__arrow">▶</span><span class="why__phase">Comentário inline, no arquivo e na linha</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Tudo parece igualmente urgente</span><span class="why__arrow">▶</span><span class="why__phase">Prefixos: CRITICO, ATENCAO, SUGESTAO, POSITIVO</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">O revisor cansa no diff grande</span><span class="why__arrow">▶</span><span class="why__phase">Avisa quando o PR passa de 10 arquivos</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">PR sem descrição vira adivinhação</span><span class="why__arrow">▶</span><span class="why__phase">Sem descrição, a revisão nem começa</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Review não é carimbo. É uma lista de pontos, com arquivo e linha.</p>
+        <p class="phase__quote-sub">Limite: a IA revisa, mas aprovar e mergear continua sendo decisão humana.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/git/review-pull-request-smart/SKILL.md</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Review na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Comentários reais da skill no PR #426</p>
+      <div class="demo demo--shot" style="--fs: 1.5cqw; --lh: 2.0">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">PREFIXO</b><span>Severidade</span></li><li><b class="mk mk--ok">ARQUIVO</b><span>Onde está o ponto</span></li><li><b class="mk mk--extra">LINHA</b><span>Qual linha</span></li><li><b class="mk mk--ok">FIX</b><span>Como resolver</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">PR #426 • 3 de 5 comentários inline</span>
+          <pre><code><span class="ln"><span class="tk-k">[ATENCAO]</span> <span class="tk-n">_competency_picker</span></span><span class="ln"><span class="tk-n">.html.erb:109</span></span><span class="ln">  O fallback noscript não funciona: não</span><span class="ln">  há botão de envio</span><span class="ln"> </span><span class="ln"><span class="tk-s">[SUGESTAO]</span> <span class="tk-n">panels_helper.rb:359</span></span><span class="ln">  Assume Integer; um value.to_i na</span><span class="ln">  entrada resolve</span><span class="ln"> </span><span class="ln"><span class="tk-s">[SUGESTAO]</span> <span class="tk-n">_competency_picker</span></span><span class="ln"><span class="tk-n">.html.erb:23</span></span><span class="ln">  IDs fixos duplicam se o partial for</span><span class="ln">  renderizado duas vezes</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">Cada comentário traz o problema e a sugestão</li><li class="reveal" style="--i: 4">Dois eram risco latente, e a IA avisa que não é bug hoje</li><li class="reveal" style="--i: 5">Os comentários saem em português, no tom do projeto</li></ul>
+    </section>
+
+    <section class="slide slide--case">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> A orquestra</h2>
       <p class="slide__subtitle reveal" style="--i: 0">O que existe no Delphos para sustentar tudo isso</p>
       <div class="orchestra">
