@@ -485,36 +485,72 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
-      <h2 class="slide__title"><span class="prompt">&gt;</span> Solução 3 de 5</h2>
-      <p class="slide__subtitle reveal" style="--i: 0">Fora dos padrões do Ruby e do Rails</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Agentes: um por camada</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Subagentes especialistas, a terceira peça do pipeline</p>
       <div class="case">
         <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
-          <h3 class="case__label">PROBLEMA</h3>
+          <h3 class="case__label">O QUE É</h3>
           <ul class="case__list">
-            <li>Cada dev com a sua interpretação do Rails</li>
-            <li>Convenção do framework trocada por improviso</li>
+            <li>Subagente do Claude Code com um papel só</li>
+            <li>A descrição diz quando usar e quando não usar</li>
+            <li>Contexto limpo, separado da conversa principal</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
-          <h3 class="case__label">COMO RESOLVEMOS</h3>
+          <h3 class="case__label">DE ONDE VEM</h3>
           <ul class="case__list">
-            <li>Um agente por camada: model, controller, service, policy, migration, job...</li>
-            <li>Regras por caminho: editar app/controllers carrega controllers.md</li>
-            <li>Fluxo fixo: Controller, Service, Gateway</li>
+            <li>Mesmo repositório rails_ai_agents: 19 agentes</li>
+            <li>Instalado no Delphos em maio de 2026</li>
+            <li>Modelo por tarefa: haiku para lint e migration, sonnet no resto</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
-          <h3 class="case__label">BENEFÍCIOS</h3>
+          <h3 class="case__label">NO DELPHOS</h3>
           <ul class="case__list">
-            <li>Sênior e júnior entregam a mesma estrutura</li>
-            <li>Onboarding mais rápido: o padrão está escrito</li>
-            <li>Review não discute arquitetura</li>
+            <li>A constituição vence qualquer agente em conflito</li>
+            <li>Rules adaptadas ao projeto, como views.md com Bootstrap e Metronic</li>
+            <li>Uma camada por agente: controller, service, query, policy, job</li>
           </ul>
         </article>
       </div>
-      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/agents/ • .claude/rules/ • anti-patterns.md</p>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/agents/ • .claude/rules/</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que agentes com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que a IA faz sozinha, e o que um especialista resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Um assistente genérico faz de tudo e nada bem</span><span class="why__arrow">▶</span><span class="why__phase">Cada agente domina uma camada e o seu padrão</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Um contexto só enche e a IA esquece regras</span><span class="why__arrow">▶</span><span class="why__phase">Contexto limpo por agente, só com o seu trabalho</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Agente com poder demais mexe no que não devia</span><span class="why__arrow">▶</span><span class="why__phase">Ferramentas e limites por agente (WHEN NOT)</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">Tarefa simples gasta o modelo mais caro</span><span class="why__arrow">▶</span><span class="why__phase">Modelo por tarefa: haiku para lint e migration</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">A estrutura muda conforme quem pediu</span><span class="why__arrow">▶</span><span class="why__phase">Mesmo agente, mesmo padrão, para sênior e júnior</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Quem faz tudo, faz tudo no próprio estilo.</p>
+        <p class="phase__quote-sub">Limite: o agente é tão bom quanto a regra que ele lê. Padrão novo pede regra nova.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/agents/ • .claude/rules/</p>
+    </section>
+
+    <section class="slide slide--case slide--stack slide--agents">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Os 19 agentes</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Cada nome termina em -agent, e cada um cuida de uma camada</p>
+      <ul class="stack"><li class="nes-container is-dark is-rounded stack__item stack__item--accent reveal" style="--i: 1"><span class="stack__kind">4 AGENTES</span><span class="stack__name">Dados</span><span class="stack__desc stack__desc--list"><span class="agents__haiku">migration</span><span class="">model</span><span class="">query</span><span class="">database-reviewer</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--pink reveal" style="--i: 2"><span class="stack__kind">4 AGENTES</span><span class="stack__name">Regra e acesso</span><span class="stack__desc stack__desc--list"><span class="">controller</span><span class="">service</span><span class="">policy</span><span class="">form</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--purple reveal" style="--i: 3"><span class="stack__kind">5 AGENTES</span><span class="stack__name">Interface</span><span class="stack__desc stack__desc--list"><span class="">presenter</span><span class="">viewcomponent</span><span class="">turbo</span><span class="">stimulus</span><span class="">tailwind</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--orange reveal" style="--i: 4"><span class="stack__kind">2 AGENTES</span><span class="stack__name">Assíncrono</span><span class="stack__desc stack__desc--list"><span class="">job</span><span class="">mailer</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--green reveal" style="--i: 5"><span class="stack__kind">4 AGENTES</span><span class="stack__name">Qualidade</span><span class="stack__desc stack__desc--list"><span class="">rspec</span><span class="">implementation</span><span class="">tdd-refactoring</span><span class="agents__haiku">lint</span></span></li></ul>
+      <p class="case__artifact reveal" style="--i: 6"><span class="agents__haiku">DOURADO</span> modelo haiku, rápido e barato • o resto roda em sonnet</p>
+      <p class="case__artifact reveal" style="--i: 7"><span>FORA DO ESCOPO</span> tailwind e viewcomponent: o Delphos usa Bootstrap e Metronic</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Agentes na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Anatomia de um agente: o service-agent</p>
+      <div class="demo demo--shot" style="--fs: 1.55cqw; --lh: 2.5">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">DESC</b><span>Quando usar e quando não</span></li><li><b class="mk mk--ok">TOOLS</b><span>Só o que precisa</span></li><li><b class="mk mk--extra">MODEL</b><span>sonnet ou haiku</span></li><li><b class="mk mk--ok">MEMORY</b><span>Aprende no projeto</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">.claude/agents/service-agent.md</span>
+          <pre><code><span class="ln"><span class="tk-c">---</span></span><span class="ln"><span class="tk-k">name:</span> service-agent</span><span class="ln"><span class="tk-k">description:</span> Creates Rails service objects…</span><span class="ln">  <span class="tk-n">WHEN NOT:</span> Simple CRUD without business logic</span><span class="ln"><span class="tk-k">tools:</span> [Read, Write, Edit, Glob, Grep, Bash]</span><span class="ln"><span class="tk-k">model:</span> sonnet</span><span class="ln"><span class="tk-k">maxTurns:</span> 30</span><span class="ln"><span class="tk-k">permissionMode:</span> acceptEdits</span><span class="ln"><span class="tk-k">memory:</span> project</span><span class="ln"><span class="tk-c">---</span></span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">A IA escolhe o agente pela descrição, sem você pedir</li><li class="reveal" style="--i: 4">O implementation-agent delega: banco, regra, aplicação, interface</li><li class="reveal" style="--i: 5">O service-agent escreve o spec junto com o código</li></ul>
     </section>
 
     <section class="slide slide--case">

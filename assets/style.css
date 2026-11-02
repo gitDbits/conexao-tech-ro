@@ -1012,3 +1012,11 @@ html, body {
 .slide--whysdd .phase__quote p { font-size: clamp(0.6rem, 1.1vw, 0.95rem); line-height: 1.6; }
 .slide--whysdd .phase__quote .phase__quote-sub { margin-top: 0.8vh; font-size: clamp(0.45rem, 0.75vw, 0.65rem); }
 .slide--whysdd .case__artifact { margin-top: 1.5vh; }
+
+/* Agentes: cards de grupo com a lista de nomes */
+.stack__desc--list { display: flex; flex-direction: column; gap: 1.2vh; }
+.agents__haiku { color: var(--gold); text-shadow: 0 0 6px var(--gold); }
+.slide--agents .stack__item { padding: 3.5vh 0.7vw !important; text-align: center; }
+.slide--agents .stack__desc--list { color: var(--fg); font-size: clamp(0.5rem, 0.85vw, 0.74rem); }
+.slide--agents .case__artifact { margin-top: 0.8vh; }
+.slide--agents .stack { margin-top: 1vh; }
