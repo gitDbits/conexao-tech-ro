@@ -409,37 +409,78 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
-      <h2 class="slide__title"><span class="prompt">&gt;</span> Solução 2 de 5</h2>
-      <p class="slide__subtitle reveal" style="--i: 0">Entregas sem testes unitários</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> TDD: teste antes do código</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Test-Driven Development, a segunda peça do pipeline</p>
       <div class="case">
         <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
-          <h3 class="case__label">PROBLEMA</h3>
+          <h3 class="case__label">O QUE É</h3>
           <ul class="case__list">
-            <li>Funcionalidades entregues sem testes</li>
-            <li>Teste deixado para depois, e o depois não chegava</li>
+            <li>Escreve o teste que falha, antes do código</li>
+            <li>Implementa o mínimo para ele passar</li>
+            <li>Melhora o código com a suíte toda verde</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
-          <h3 class="case__label">COMO RESOLVEMOS</h3>
+          <h3 class="case__label">DE ONDE VEM</h3>
           <ul class="case__list">
-            <li>TDD no pipeline: RED, GREEN, REFACTOR</li>
-            <li>rspec-agent escreve o teste que falha</li>
-            <li>implementation-agent faz passar</li>
-            <li>tdd-refactoring-agent melhora o código</li>
+            <li>Mesmo repositório rails_ai_agents</li>
+            <li>Três agentes, um por fase: rspec, implementation e tdd-refactoring</li>
+            <li>Comando /feature-tdd-implementation</li>
           </ul>
         </article>
         <span class="case__arrow" aria-hidden="true"></span>
         <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
-          <h3 class="case__label">BENEFÍCIOS</h3>
+          <h3 class="case__label">NO DELPHOS</h3>
           <ul class="case__list">
-            <li>Cobertura desde o primeiro commit</li>
-            <li>CI roda a suíte inteira em todo PR</li>
-            <li>Review foca na regra de negócio</li>
+            <li>Red, Green, Refactor é princípio da constituição</li>
+            <li>O teste vem antes do código em toda tarefa do tasks.md</li>
+            <li>RSpec, FactoryBot e Shoulda Matchers</li>
           </ul>
         </article>
       </div>
-      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/agents/rspec-agent.md • .claude/rules/testing.md</p>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/agents/ • .claude/rules/testing.md</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que TDD com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que a IA faz sozinha, e o que o teste primeiro resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">IA escreve o teste depois, moldado ao código que já fez</span><span class="why__arrow">▶</span><span class="why__phase">Teste vermelho primeiro prova que ele pega o erro</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">“Funciona” sem prova nenhuma</span><span class="why__arrow">▶</span><span class="why__phase">Suíte verde é a prova, a cada mudança</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Refatorar com IA sem rede de segurança</span><span class="why__arrow">▶</span><span class="why__phase">Só refatora com tudo verde; falhou, desfaz</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">IA ajusta o teste para o código passar</span><span class="why__arrow">▶</span><span class="why__phase">O agente de GREEN nunca altera os specs</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">Critério do card vira cobrança vaga</span><span class="why__arrow">▶</span><span class="why__phase">Cada critério vira um exemplo executável</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Teste que nunca falhou não prova nada.</p>
+        <p class="phase__quote-sub">Bug real no Delphos: um spec com let preguiçoso passava por acidente. A lição virou regra em testing.md.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/rules/testing.md • .specify/memory/lessons-learned.md</p>
+    </section>
+
+    <section class="slide slide--case slide--flow slide--sddflow slide--tddflow">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> O ciclo Red, Green, Refactor</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Um agente por fase, cada um com um limite claro</p>
+      <div class="flow">
+        <div class="nes-container is-dark is-rounded flow__step flow__step--orange reveal" style="--i: 1"><span class="flow__n">RED</span><span class="flow__name">ESCREVER</span><code class="sdd__cmd">@rspec-agent</code><span class="sdd__art">gera o spec que falha</span><span class="flow__desc">Roda e confirma a falha antes de seguir</span></div>
+        <div class="flow__link reveal" style="--i: 2" aria-hidden="true"><span class="flow__line"></span><span class="flow__head"></span></div>
+        <div class="nes-container is-dark is-rounded flow__step flow__step--green reveal" style="--i: 3"><span class="flow__n">GREEN</span><span class="flow__name">FAZER PASSAR</span><code class="sdd__cmd">@implementation-agent</code><span class="sdd__art">gera o código mínimo</span><span class="flow__desc">Delega por camada: migration, model, service, controller</span></div>
+        <div class="flow__link reveal" style="--i: 4" aria-hidden="true"><span class="flow__line"></span><span class="flow__head"></span></div>
+        <div class="nes-container is-dark is-rounded flow__step flow__step--accent reveal" style="--i: 5"><span class="flow__n">REFACTOR</span><span class="flow__name">MELHORAR</span><code class="sdd__cmd">@tdd-refactoring-agent</code><span class="sdd__art">gera código mais limpo</span><span class="flow__desc">Uma mudança por vez; falhou, reverte</span></div>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>REGRA</span> o GREEN nunca edita testes e o REFACTOR nunca muda comportamento</p>
+      <p class="case__artifact reveal" style="--i: 8"><span>FECHA COM</span> suíte completa, RuboCop e Brakeman</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> TDD na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Card SCRUM-230: o ciclo dentro do tasks.md</p>
+      <div class="demo demo--shot" style="--fs: 1.7cqw; --lh: 2.4">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">O SPEC COBRE</h3><ul><li><b class="mk mk--ok">UP</b><span>Rotula Homem e Mulher</span></li><li><b class="mk mk--ok">UP</b><span>Mantém o código 9</span></li><li><b class="mk mk--ok">UP</b><span>Idempotente</span></li><li><b class="mk mk--extra">DOWN</b><span>Reverte os rótulos</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">specs/888-sexo-homem-mulher-mte/tasks.md</span>
+          <pre><code><span class="ln"><span class="tk-k">RED</span>    <span class="tk-s">T004</span> spec da migration</span><span class="ln">       roda e falha: LoadError</span><span class="ln"> </span><span class="ln"><span class="tk-n">GREEN</span>  <span class="tk-s">T005</span> migration criada</span><span class="ln">       <span class="tk-s">T007</span> spec passa, rollback ok</span><span class="ln"> </span><span class="ln"><span class="tk-k">RED</span>    <span class="tk-s">T011</span> specs de consumo falham</span><span class="ln"> </span><span class="ln"><span class="tk-n">GREEN</span>  <span class="tk-s">T012</span> GENDERS = %w[Homem Mulher]</span><span class="ln">       <span class="tk-s">T021</span> só as 13 falhas antigas</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">O spec falha com LoadError até a migration existir</li><li class="reveal" style="--i: 4">13 falhas antigas anotadas antes de mexer em qualquer coisa</li><li class="reveal" style="--i: 5">Um comportamento por it, com context e let</li></ul>
     </section>
 
     <section class="slide slide--case">
