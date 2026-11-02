@@ -1023,3 +1023,11 @@ html, body {
 
 .slide--skills .stack { grid-template-columns: repeat(4, 1fr); }
 .slide--skills .stack__item { padding: 3vh 0.8vw !important; }
+
+/* Antes e depois: oito linhas, uma por problema */
+.slide--shift { padding-top: 7vh; gap: 1.4vh; }
+.slide--shift .slide__title { font-size: clamp(1rem, 2.2vw, 1.8rem); }
+.slide--shift .phase-tag { top: 2.5vh; }
+.slide--shift .shift { margin-top: 2vh; }
+.slide--shift .shift__row { margin-bottom: 2.2vh; font-size: clamp(0.55rem, 1.2vw, 1rem); }
+.slide--shift .hud { margin-top: 0.5vh; }

@@ -340,7 +340,7 @@
           <h3 class="case__label">NO DELPHOS</h3>
           <ul class="case__list">
             <li>Todo card passa pelo rito, sem exceção</li>
-            <li>297 pastas em specs/, uma por entrega</li>
+            <li>298 pastas em specs/, uma por entrega</li>
             <li>Os artefatos vão junto no PR</li>
           </ul>
         </article>
@@ -1024,7 +1024,7 @@
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> Review automatizada</h2>
-      <p class="slide__subtitle reveal" style="--i: 0">Revisão de PR com a IA, a décima primeira peça do pipeline</p>
+      <p class="slide__subtitle reveal" style="--i: 0">Revisão de PR com a IA, que fecha a décima peça do pipeline</p>
       <div class="case">
         <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
           <h3 class="case__label">O QUE É</h3>
@@ -1092,33 +1092,38 @@
 ├─ rules/      <span class="hl">14</span> regras por caminho
 ├─ skills/     <span class="hl">20</span> skills
 ├─ commands/   fluxo SDD
-├─ git/        commit e PR
+├─ git/        commit, PR e review
+├─ sepog/      card Jira e USTs
 └─ settings.json  hooks
 CLAUDE.md
 .specify/  constituição
-specs/     <span class="hl">276</span> entregas</pre>
+specs/     <span class="hl">298</span> entregas
+.github/   CI e Dependabot</pre>
         <ul class="orchestra__legend">
           <li class="reveal" style="--i: 2"><b>CLAUDE.md</b> a regra do jogo: SDD obrigatório</li>
-          <li class="reveal" style="--i: 3"><b>agents</b> quem faz cada camada</li>
-          <li class="reveal" style="--i: 4"><b>rules</b> o padrão, carregado por caminho</li>
-          <li class="reveal" style="--i: 5"><b>skills</b> fluxos prontos: card, commit, PR, review</li>
-          <li class="reveal" style="--i: 6"><b>hooks</b> o que roda sozinho, sem depender de ninguém</li>
+          <li class="reveal" style="--i: 3"><b>agents e rules</b> quem faz cada camada, e o padrão dela</li>
+          <li class="reveal" style="--i: 4"><b>skills</b> fluxos prontos: card, commit, PR, review</li>
+          <li class="reveal" style="--i: 5"><b>hooks</b> o que roda sozinho, sem depender de ninguém</li>
+          <li class="reveal" style="--i: 6"><b>CI e Dependabot</b> o porteiro do PR e as gems em dia</li>
         </ul>
       </div>
     </section>
 
-    <section class="slide slide--case">
+    <section class="slide slide--case slide--shift">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> Antes e depois</h2>
       <p class="slide__subtitle reveal" style="--i: 0">O padrão saiu da cabeça de cada dev e foi para o repositório</p>
       <ul class="shift">
-        <li class="shift__row reveal" style="--i: 1"><span class="shift__from">Requisito interpretado</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Spec com critérios de aceite</span></li>
+        <li class="shift__row reveal" style="--i: 1"><span class="shift__from">Requisito interpretado</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Spec com critérios</span></li>
         <li class="shift__row reveal" style="--i: 2"><span class="shift__from">Teste depois</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Teste primeiro (TDD)</span></li>
-        <li class="shift__row reveal" style="--i: 3"><span class="shift__from">Rails à moda de cada um</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Um agente por camada</span></li>
+        <li class="shift__row reveal" style="--i: 3"><span class="shift__from">Rails à moda de cada um</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Agentes e rules por camada</span></li>
         <li class="shift__row reveal" style="--i: 4"><span class="shift__from">Estilo discutido no PR</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Estilo corrigido por hook</span></li>
         <li class="shift__row reveal" style="--i: 5"><span class="shift__from">Segurança por memória</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Segurança no CI</span></li>
+        <li class="shift__row reveal" style="--i: 6"><span class="shift__from">Card fora do padrão</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Card com USTs do catálogo</span></li>
+        <li class="shift__row reveal" style="--i: 7"><span class="shift__from">PR sem contexto</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">PR com descrição padrão</span></li>
+        <li class="shift__row reveal" style="--i: 8"><span class="shift__from">Review de carimbo</span><span class="shift__arrow">&gt;&gt;</span><span class="shift__to">Review com arquivo e linha</span></li>
       </ul>
-      <p class="hud reveal" style="--i: 6">PRÓXIMA FASE: DEMANDA</p>
+      <p class="hud reveal" style="--i: 9">PRÓXIMA FASE: DEMANDA</p>
     </section>
   </main>
   <script src="assets/deck.js"></script>
