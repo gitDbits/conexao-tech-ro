@@ -887,6 +887,81 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Card Jira: padrão SEPOG</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Cards técnicos com USTs, a nona peça do pipeline</p>
+      <div class="case">
+        <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
+          <h3 class="case__label">O QUE É</h3>
+          <ul class="case__list">
+            <li>Card técnico no formato GEA/SEPOG</li>
+            <li>Título, categoria, cenário, critérios de aceite, USTs, justificativa e total</li>
+            <li>Sempre no projeto SCRUM do Jira</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
+          <h3 class="case__label">DE ONDE VEM</h3>
+          <ul class="case__list">
+            <li>Skill create-jira-card, nossa</li>
+            <li>Catálogo de USTs do termo de referência (Anexo VIII, SETIC)</li>
+            <li>8 passos, com pergunta de categoria e confirmação antes de criar</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
+          <h3 class="case__label">NO DELPHOS</h3>
+          <ul class="case__list">
+            <li>O CLAUDE.md manda ler a skill antes de qualquer card</li>
+            <li>O card é a entrada do SDD: o SCRUM-230 virou a pasta specs/888</li>
+            <li>O critério do card vira critério de aceite verificável</li>
+          </ul>
+        </article>
+      </div>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/sepog/skills/create-jira-card.md • .claude/sepog/references/manual-ust-setic.md</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que card padrão com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que acontece com card solto, e o que o padrão resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Card vago vira código vago</span><span class="why__arrow">▶</span><span class="why__phase">Cenário e critérios de aceite escritos antes</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Pontuação de UST no olho, sem catálogo</span><span class="why__arrow">▶</span><span class="why__phase">Código do catálogo e justificativa em cada UST</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">Card sem épico se perde no backlog</span><span class="why__arrow">▶</span><span class="why__phase">A skill busca o épico correspondente (passo 6)</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">Cada pessoa monta o card do seu jeito</span><span class="why__arrow">▶</span><span class="why__phase">Um formato só: título com emoji e categoria</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">A IA cria card sozinha no sistema do órgão</span><span class="why__arrow">▶</span><span class="why__phase">A skill pergunta antes de criar (passo 7)</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Card bom é o começo da spec.</p>
+        <p class="phase__quote-sub">Limite: a skill monta o card, mas quem valida pontuação e escopo é gente.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/sepog/skills/create-jira-card.md</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Anatomia de um card</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Card SCRUM-230, no épico SCRUM-109 Painel Dw Caged</p>
+      <div class="demo demo--shot" style="--fs: 1.5cqw; --lh: 2.1">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">CATEG.</b><span>delphos, sipp ou observatorio</span></li><li><b class="mk mk--ok">CENÁRIO</b><span>Eu, enquanto…</span></li><li><b class="mk mk--extra">CRITÉRIOS</b><span>Pronto quando…</span></li><li><b class="mk mk--ok">USTS</b><span>Tabela do catálogo</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">SCRUM-230 (trecho)</span>
+          <pre><code><span class="ln"><span class="tk-k">Categoria:</span> delphos</span><span class="ln"> </span><span class="ln"><span class="tk-k">Cenário</span></span><span class="ln">  Eu, enquanto Engenheiro de Software,</span><span class="ln">  preciso que descricao_sexo use Homem</span><span class="ln">  e Mulher, como no layout do MTE</span><span class="ln"> </span><span class="ln"><span class="tk-k">Critérios de Aceite</span></span><span class="ln">  * id_sexo 1 vira Homem, 3 vira Mulher</span><span class="ln">  * Migration reversível e idempotente</span><span class="ln">  * Specs atualizados, suíte passando</span><span class="ln"> </span><span class="ln"><span class="tk-k">USTs atribuídas</span> • <span class="tk-k">Justificativa</span></span><span class="ln"><span class="tk-s">Total: 8 USTs</span></span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">A categoria é obrigatória e entra na busca do épico</li><li class="reveal" style="--i: 4">O cenário diz quem precisa e por quê</li><li class="reveal" style="--i: 5">Os critérios viram a spec: o card alimenta o SDD</li></ul>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Card na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">As USTs reais do SCRUM-230</p>
+      <div class="demo demo--shot" style="--fs: 1.4cqw; --lh: 2.2">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">CÓDIGO</b><span>Item do catálogo</span></li><li><b class="mk mk--ok">VALOR</b><span>USTs do item</span></li><li><b class="mk mk--extra">P.8</b><span>Igual ao testado</span></li><li><b class="mk mk--ok">TOTAL</b><span>Soma da tabela</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">USTs atribuídas</span>
+          <pre><code><span class="ln"><span class="tk-c">SCRUM-230</span> • delphos • 8 USTs</span><span class="ln"> </span><span class="ln"><span class="tk-k">A.9 </span> Análise do impacto da mudança  <span class="tk-s">  2</span></span><span class="ln"><span class="tk-k">P.13</span> Lógica nas queries e no JS     <span class="tk-s">  2</span></span><span class="ln"><span class="tk-k">P.10</span> Migration de dados             <span class="tk-s">0,5</span></span><span class="ln"><span class="tk-k">D.6 </span> Ajuste pontual nas views       <span class="tk-s">0,5</span></span><span class="ln"><span class="tk-k">P.8 </span> Testes, igual ao P.13          <span class="tk-s">  2</span></span><span class="ln"><span class="tk-k">IM.3</span> Implantação em homologação     <span class="tk-s">0,5</span></span><span class="ln"><span class="tk-k">IM.4</span> Implantação em produção        <span class="tk-s">0,5</span></span><span class="ln"> </span><span class="ln"><span class="tk-n">Total</span>                                <span class="tk-s">  8</span></span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">Cada UST tem código do catálogo e uma justificativa</li><li class="reveal" style="--i: 4">O P.8 vale o mesmo que o P.13 testado: 2 USTs</li><li class="reveal" style="--i: 5">Pontuação reaproveitada, como P.3, vale menos que a nova</li></ul>
+    </section>
+
+    <section class="slide slide--case">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> A orquestra</h2>
       <p class="slide__subtitle reveal" style="--i: 0">O que existe no Delphos para sustentar tudo isso</p>
       <div class="orchestra">
