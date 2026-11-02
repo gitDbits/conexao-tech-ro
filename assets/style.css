@@ -79,6 +79,31 @@ html, body {
   color: var(--muted);
 }
 
+.cover__contacts {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: clamp(0.55rem, 0.9vw, 0.8rem);
+  line-height: 2.2;
+}
+
+.cover__contacts li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cover__contacts li + li {
+  margin-top: 1.25rem;
+}
+
+/* Brilho claro para o ícone do GitHub (#333) não sumir no fundo escuro */
+.cover__icon {
+  flex: none;
+  filter: drop-shadow(0 0 4px var(--fg));
+}
+
 .cover__title .prompt,
 .map__title .prompt,
 .slide__title .prompt {
@@ -234,8 +259,8 @@ html, body {
 }
 
 .slide--map.is-revealed .module {
-  animation: level-in 0.5s steps(5) backwards;
-  animation-delay: calc(var(--i) * 0.35s);
+  animation: level-in 0.3s steps(5) backwards;
+  animation-delay: calc(var(--i) * 0.12s);
 }
 
 @keyframes level-in {
@@ -1000,6 +1025,13 @@ html, body {
   color: var(--green);
 }
 .slide--sddflow .case__artifact { margin-top: 2.4vh; }
+.slide--sddflow .sdd__def { margin-top: 1vh; padding: 1.2vh 1.5vw !important; }
+.slide--sddflow .sdd__def p { font-size: clamp(0.6rem, 1.1vw, 0.95rem); line-height: 1.7; }
+.slide--sddflow .sdd__how { margin-top: 0; }
+.slide--sddflow .flow { margin-top: 0; }
+.slide--sddflow:not(.slide--tddflow) { gap: 2.6vh; }
+.slide--sddflow:not(.slide--tddflow) .flow__step { padding: 2vh 0.6vw !important; }
+.slide--sddflow:not(.slide--tddflow) .case__artifact { margin-top: 0; }
 
 .slide--whysdd .why__row { grid-template-columns: 2.4em 1.1fr auto 1.2fr; }
 .slide--whysdd .why__phase { color: var(--green); text-shadow: 0 0 6px var(--green); line-height: 1.6; }
@@ -1031,3 +1063,82 @@ html, body {
 .slide--shift .shift { margin-top: 2vh; }
 .slide--shift .shift__row { margin-bottom: 2.2vh; font-size: clamp(0.55rem, 1.2vw, 1rem); }
 .slide--shift .hud { margin-top: 0.5vh; }
+
+/* Slide de vídeo: player dentro do container NES, limitado pela altura da tela */
+.slide--video .video {
+  width: min(86vw, calc(62vh * 1896 / 1030));
+  padding: 0.6rem !important;
+}
+.slide--video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1896 / 1030;
+  background: var(--bg);
+}
+
+/* Slides da execução (ciclo e agentes): poucos cards grandes, centralizados na tela */
+.slide--exec:not(.slide--tddflow) { justify-content: center; gap: 4vh; }
+.slide--exec:not(.slide--tddflow) .flow__step { padding: 5vh 1vw !important; gap: 2.4vh; }
+.slide--exec:not(.slide--tddflow) .flow__name { font-size: clamp(0.8rem, 1.5vw, 1.3rem); }
+.slide--exec:not(.slide--tddflow) .sdd__art { font-size: clamp(0.6rem, 1vw, 0.85rem); }
+.slide--exec:not(.slide--tddflow) .flow__desc { font-size: clamp(0.6rem, 1.05vw, 0.9rem); line-height: 1.9; }
+.slide--exec:not(.slide--tddflow) .case__artifact { margin-top: 0; font-size: clamp(0.6rem, 1vw, 0.85rem); }
+
+/* Missão gamificada do SDD: trilha de 5 fases (concluída, atual, bloqueada) */
+.quest__track {
+  --node: clamp(32px, 3.4vw, 52px);
+  display: flex;
+  width: min(88vw, 1100px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.quest__node {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9vh;
+  color: var(--muted);
+  font-size: clamp(0.5rem, 0.85vw, 0.75rem);
+  text-align: center;
+}
+.quest__node::before {
+  content: attr(data-n);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--node);
+  height: var(--node);
+  border: 4px solid currentColor;
+  background: var(--bg);
+  font-size: clamp(0.7rem, 1.3vw, 1.1rem);
+}
+.quest__node::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--node) / 2 - 2px);
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background: var(--surface);
+}
+.quest__node:last-child::after { display: none; }
+.quest__node.is-done { color: var(--green); text-shadow: 0 0 8px var(--green); }
+.quest__node.is-done::after { background: var(--green); }
+.quest__node.is-current { color: var(--accent); text-shadow: 0 0 8px var(--accent); }
+.quest__node.is-current::before { box-shadow: 0 0 12px var(--accent); animation: quest-pulse 1s steps(2) infinite; }
+.quest__node.is-locked { opacity: 0.55; }
+.quest__reward { color: var(--pink); font-size: 0.85em; }
+
+@keyframes quest-pulse {
+  50% { box-shadow: 0 0 0 var(--accent); }
+}
+
+.slide--quest { gap: 2.4vh; }
+
+.slide--questmap { justify-content: center; gap: 5vh; }
+.slide--questmap .quest__track { --node: clamp(44px, 5vw, 76px); width: min(92vw, 1300px); }
+.slide--questmap .quest__node { font-size: clamp(0.65rem, 1.1vw, 0.95rem); gap: 1.6vh; }
+.slide--questmap .quest__node::before { font-size: clamp(1rem, 1.9vw, 1.6rem); }

@@ -1,6 +1,7 @@
 // Digita os [data-typewriter] de um slide em sequência como num terminal, com cursor piscando.
 // Depois de uma pausa apaga tudo (de trás para frente) e recomeça. Só o slide ativo anima.
 // Com data-typewriter="once" o texto é digitado uma vez e permanece na tela.
+// data-speed define o intervalo entre letras (ms) de uma linha; o padrão é TYPE_DELAY_MS.
 const TYPE_DELAY_MS = 80;
 const ERASE_DELAY_MS = 35;
 const START_DELAY_MS = 600;
@@ -20,7 +21,7 @@ function prepare(el) {
 
   el.setAttribute("aria-label", text);
   el.replaceChildren(...(prompt ? [prompt, " "] : []), typed, rest);
-  return { typed, rest, text, once: el.dataset.typewriter === "once" };
+  return { typed, rest, text, once: el.dataset.typewriter === "once", delay: Number(el.dataset.speed) || TYPE_DELAY_MS };
 }
 
 function show(line, length) {
@@ -51,7 +52,7 @@ async function loop(lines, slide) {
       line.typed.after(cursor);
       for (let i = 1; i <= line.text.length && alive(); i++) {
         show(line, i);
-        await sleep(TYPE_DELAY_MS);
+        await sleep(line.delay);
       }
     }
     if (once) {
