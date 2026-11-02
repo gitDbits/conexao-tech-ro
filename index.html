@@ -555,6 +555,76 @@
 
     <section class="slide slide--case">
       <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Rules: padrão por caminho</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Convenções em arquivos curtos, a quarta peça do pipeline</p>
+      <div class="case">
+        <article class="nes-container is-dark is-rounded case__col case__col--problem reveal" style="--i: 1">
+          <h3 class="case__label">O QUE É</h3>
+          <ul class="case__list">
+            <li>Arquivos curtos em .claude/rules/</li>
+            <li>Cada um carrega só quando a IA mexe em arquivo do seu caminho</li>
+            <li>Três ficam sempre ativos: princípios, comandos e ferramentas</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--solution reveal" style="--i: 2">
+          <h3 class="case__label">DE ONDE VEM</h3>
+          <ul class="case__list">
+            <li>Mesmo repositório rails_ai_agents: 14 rules</li>
+            <li>11 por caminho e 3 sempre ativas</li>
+            <li>Dizem o que é padrão e o que evitar</li>
+          </ul>
+        </article>
+        <span class="case__arrow" aria-hidden="true"></span>
+        <article class="nes-container is-dark is-rounded case__col case__col--benefit reveal" style="--i: 3">
+          <h3 class="case__label">NO DELPHOS</h3>
+          <ul class="case__list">
+            <li>Ficam no repositório: mudar o padrão é um PR</li>
+            <li>Constituição e CLAUDE.md vencem em conflito</li>
+            <li>Lição aprendida vira regra, como o caso do let em testing.md</li>
+          </ul>
+        </article>
+      </div>
+      <p class="case__artifact reveal" style="--i: 4"><span>NO REPO</span> .claude/rules/</p>
+    </section>
+
+    <section class="slide slide--case slide--why slide--whysdd">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Por que rules com IA?</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">O que a IA faz sozinha, e o que a convenção escrita resolve</p>
+      <ol class="why"><li class="why__row reveal" style="--i: 1"><span class="why__n">1</span><span class="why__text">Regra dita no prompt se perde a cada conversa</span><span class="why__arrow">▶</span><span class="why__phase">Rule no repositório, carregada sozinha</span></li><li class="why__row reveal" style="--i: 2"><span class="why__n">2</span><span class="why__text">Regra demais enche o contexto da IA</span><span class="why__arrow">▶</span><span class="why__phase">Só carrega a rule do caminho em edição</span></li><li class="why__row reveal" style="--i: 3"><span class="why__n">3</span><span class="why__text">O padrão mora na cabeça de quem sabe</span><span class="why__arrow">▶</span><span class="why__phase">Padrão escrito, igual para todo desenvolvedor</span></li><li class="why__row reveal" style="--i: 4"><span class="why__n">4</span><span class="why__text">O mesmo erro volta toda semana</span><span class="why__arrow">▶</span><span class="why__phase">Erro vira rule e some do PR seguinte</span></li><li class="why__row reveal" style="--i: 5"><span class="why__n">5</span><span class="why__text">Sem convenção escrita, a IA improvisa</span><span class="why__arrow">▶</span><span class="why__phase">A rule diz o que fazer e o que evitar</span></li></ol>
+      <div class="nes-container is-dark is-rounded phase__quote reveal" style="--i: 6">
+        <p>Corrigir no prompt vale uma conversa. Na rule, vale o projeto.</p>
+        <p class="phase__quote-sub">Limite: rule desatualizada ensina errado. Ela se revisa junto com o código.</p>
+      </div>
+      <p class="case__artifact reveal" style="--i: 7"><span>NO REPO</span> .claude/rules/ • .specify/memory/lessons-learned.md</p>
+    </section>
+
+    <section class="slide slide--case slide--stack slide--agents">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> As 14 rules</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">11 carregam por caminho e 3 ficam sempre ativas</p>
+      <ul class="stack"><li class="nes-container is-dark is-rounded stack__item stack__item--accent reveal" style="--i: 1"><span class="stack__kind">3 RULES</span><span class="stack__name">Sempre ativas</span><span class="stack__desc stack__desc--list"><span>principles</span><span>cli</span><span>cli-tools</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--pink reveal" style="--i: 2"><span class="stack__kind">5 RULES</span><span class="stack__name">Camadas</span><span class="stack__desc stack__desc--list"><span>controllers</span><span>services</span><span>queries</span><span>models</span><span>policies</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--orange reveal" style="--i: 3"><span class="stack__kind">3 RULES</span><span class="stack__name">Dados e filas</span><span class="stack__desc stack__desc--list"><span>migrations</span><span>jobs</span><span>mailers</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--purple reveal" style="--i: 4"><span class="stack__kind">1 RULE</span><span class="stack__name">Interface</span><span class="stack__desc stack__desc--list"><span>views</span></span></li><li class="nes-container is-dark is-rounded stack__item stack__item--green reveal" style="--i: 5"><span class="stack__kind">2 RULES</span><span class="stack__name">Qualidade</span><span class="stack__desc stack__desc--list"><span>testing</span><span>anti-patterns</span></span></li></ul>
+      <p class="case__artifact reveal" style="--i: 6"><span>POR CAMINHO</span> editar app/services carrega services.md, sem você pedir</p>
+      <p class="case__artifact reveal" style="--i: 7"><span>SEMPRE ATIVAS</span> princípios (KISS, DRY, YAGNI, SRP), comandos e ferramentas</p>
+    </section>
+
+    <section class="slide slide--case slide--shot">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
+      <h2 class="slide__title"><span class="prompt">&gt;</span> Rules na prática</h2>
+      <p class="slide__subtitle reveal" style="--i: 0">Anatomia de uma rule: a services.md</p>
+      <div class="demo demo--shot" style="--fs: 1.6cqw; --lh: 2.4">
+        <aside class="nes-container is-dark is-rounded demo__side reveal" style="--i: 1"><h3 class="demo__label">COMO LER</h3><ul><li><b class="mk mk--ok">PATHS</b><span>Quando a rule carrega</span></li><li><b class="mk mk--ok">ALVO</b><span>Código e spec juntos</span></li><li><b class="mk mk--extra">REGRA</b><span>Uma convenção por linha</span></li><li><b class="mk mk--ok">VIDA</b><span>Revisada com o código</span></li></ul></aside>
+        <div class="nes-container is-dark is-rounded demo__code reveal" style="--i: 2">
+          <span class="demo__file">.claude/rules/services.md</span>
+          <pre><code><span class="ln"><span class="tk-c">---</span></span><span class="ln"><span class="tk-k">paths:</span></span><span class="ln">  - <span class="tk-s">"app/services/**/*.rb"</span></span><span class="ln">  - <span class="tk-s">"spec/services/**/*.rb"</span></span><span class="ln"><span class="tk-c">---</span></span><span class="ln"> </span><span class="ln"><span class="tk-n"># Service Object Conventions</span></span><span class="ln">- Single public method: #call</span><span class="ln">- Class-level shortcut: self.call(...)</span><span class="ln">- Never raise exceptions for business logic…</span><span class="ln">- Inherit from ApplicationService base class</span></code></pre>
+        </div>
+      </div>
+      <ul class="demo__issues"><li class="reveal" style="--i: 3">Editar app/services carrega a rule sem ninguém pedir</li><li class="reveal" style="--i: 4">A mesma rule vale para o código e para o spec dele</li><li class="reveal" style="--i: 5">Lição de review vira linha nova, como o let em testing.md</li></ul>
+    </section>
+
+    <section class="slide slide--case">
+      <p class="phase-tag">FASE 01 • ORQUESTRAÇÃO</p>
       <h2 class="slide__title"><span class="prompt">&gt;</span> Solução 4 de 5</h2>
       <p class="slide__subtitle reveal" style="--i: 0">Fora da sintaxe e do estilo de código definidos</p>
       <div class="case">
