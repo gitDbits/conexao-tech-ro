@@ -974,3 +974,29 @@ html, body {
 .demo--shot .demo__code code { font-size: var(--fs, 1.5cqw); line-height: var(--lh, 2.05); }
 
 .demo--shot .demo__side span { overflow-wrap: anywhere; }
+
+.slide--stack .stack__item .stack__name { overflow-wrap: anywhere; }
+@media (max-height: 800px) {
+  .slide--stack { padding-top: 7vh; gap: 3vh; }
+  .stack__pixel { width: clamp(36px, 3.6vw, 60px); height: clamp(36px, 3.6vw, 60px); }
+  .stack__item { padding: 2vh 0.7vw !important; gap: 1.2vh; }
+}
+
+/* SDD: pipeline de 5 passos com comando e artefato */
+.slide--sddflow .flow { margin-top: 3vh; gap: 0.6vw; align-items: stretch; }
+.slide--sddflow .flow__step { padding: 3vh 0.6vw !important; gap: 1.4vh; justify-content: flex-start; }
+.slide--sddflow .flow__link { flex: 0 0 clamp(24px, 2.6vw, 44px); align-self: center; }
+.slide--sddflow .flow__name { font-size: clamp(0.65rem, 1.15vw, 1rem); }
+.flow__step--pink { --glow: var(--pink); }
+.flow__step--orange { --glow: var(--orange); }
+.sdd__cmd {
+  font-size: clamp(0.5rem, 0.85vw, 0.74rem);
+  color: var(--glow);
+  text-shadow: 0 0 6px var(--glow);
+  overflow-wrap: anywhere;
+}
+.sdd__art {
+  font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+  color: var(--green);
+}
+.slide--sddflow .case__artifact { margin-top: 2.4vh; }
